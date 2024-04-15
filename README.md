@@ -2,7 +2,7 @@
 Этот гайд предназначен для тех, кто хочет развернуть Apache Airflow через Docker, а также получить доступ к PostgreSQL и ClickHouse. Все действия выполнялись на ОС Windows 10/11, в остальных ОС принцип установки абсолютно аналогичен, часть команд могут выполняться через командную строку, а не графический интерфейс.
 Необходимый стек для выполнения процедур: 
 * DBeaver (https://dbeaver.io/, или иная СУБД, способная подключаться к PostgreSQL и ClickHouse);
-* VSCode (https://code.visualstudio.com/, я использовал его) / PyCharm (https://www.jetbrains.com/ru-ru/pycharm/);
+* VSCode (https://code.visualstudio.com/, я использовал его) / PyCharm (https://www.jetbrains.com/ru-ru/pycharm/) или любая другая IDE, работающая с Python;
 * Python (https://www.python.org/, можно взять самую новую версию проблем быть не должно - на момент написания гайда 3.12.2);
 * Docker (см. ниже),
 
