@@ -99,4 +99,4 @@ RUN pip install --no-cache-dir -r /requirements.txt
 * запустить команду в терминале IDE `docker build . --tag extending_airflow:latest`;
 * в docker-compose.yaml поменять 52 строку на `image: ${AIRFLOW_IMAGE_NAME:-extending_airflow:latest}` (номер строки может отличаться, важно, что это самый первый `image` в файле);
 * запустить команду в терминале IDE `docker compose up -d --no-deps --build airflow-webserver airflow-scheduler`;
-* пересобрать контейнер `docker-compose up` (если не запущен).
+* пересобрать контейнер `docker-compose up` (если контейнеры были погашены).
