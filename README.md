@@ -75,7 +75,7 @@ clickhouse:
 - заходим на [локалхост](http://localhost:8080/) и вводим данные для входа логин/пароль (по умолчанию `airflow` для логина и пароля) Airflow.
 
 <p align="center">
-  <img width="600" height="220" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_main_menu.png">
+  <img width="600" height="250" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_main_menu.png">
 </p>
 
 ## 4. Добавление новых Python-пакетов
@@ -105,3 +105,5 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 ## 5. Добавление Python-пакета, содержащего ClickHouseOperator
 По умолчанию в Apache Airflow отсутствует возможность создавать ClickHouseOperator для создания, изменения и удаления таблиц (и, что самое главное, обновления данных в автоматическом режиме). Этот пакет не удалось поставить через средства из п.4, поэтому пришлось скачать файл из этой [директории](https://github.com/bryzgaloff/airflow-clickhouse-plugin) - надо содержимое папки `airflow_clickhouse_plugin` перенести в папку `dags` корневой директории, чего должно быть достаточно для установки плагина (именно так, чтобы не пришлось править пути). 
+
+В VSCode конфигурация путей должна быть следующей:
