@@ -20,8 +20,8 @@
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
 </p>
 * откорректируем docker-compose.yaml для postgres (скорее всего просто придется добавить порты) и clickhouse (полностью добавить все строки):
-```
-services:
+```docker
+  services:
   postgres:
     image: postgres:13
     environment:
@@ -38,4 +38,4 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-```
+  ```
