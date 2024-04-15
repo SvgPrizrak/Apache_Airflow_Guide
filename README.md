@@ -78,8 +78,8 @@ clickhouse:
   <img width="600" height="220" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_main_menu.png">
 </p>
 
-## 4. Добавление новых пакетов
-Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного по-другому, то стоит создать 2 файла: `requirements.txt` и `Dockerfile`.
+## 4. Добавление новых Python-пакетов
+Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 2 файла в корневой директории: `requirements.txt` и `Dockerfile`.
 Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); последний пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/).
 ```python
 clickhouse-connect==0.7.8
@@ -88,9 +88,15 @@ airflow-providers-clickhouse==0.0.1
 ```
 
 Содержимое файла `Dockerfile` - код, позволяющий устанавливать пакеты через `pip install` (опять-таки внимательно смотрим на версию вашего Apache Airflow):
-```cocker
+```docker
 FROM apache/airflow:2.9.0
 COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /requirements.txt
 ```
+
+После чего следует сделать следующую последовательность действий, запускающую установку пакетов и пересобирающую Docker-контейнер:
+* запустить команду в терминале IDE `docker build . --tag extending_airflow:latest`;
+* в docker-compose.yaml поменять 52 строку на `image: ${AIRFLOW_IMAGE_NAME:-extending_airflow:latest}` (номер строки может отличаться, важно, что это самый первый `image` в файле);
+* запустить команду в терминале IDE `docker compose up -d --no-deps --build airflow-webserver airflow-scheduler`;
+* пересобрать контейнер `docker-compose up` (если не запущен).
