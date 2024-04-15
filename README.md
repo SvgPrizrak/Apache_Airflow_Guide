@@ -80,9 +80,9 @@ clickhouse:
 
 ## 4. Добавление новых пакетов
 Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного по-другому, то стоит создать 2 файла: `requirements.txt` и `Dockerfile`
-Содержимое 1 файла: 
+Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь]([https://dbeaver.io](https://pypi.org/project/clickhouse-driver/) и [здесь]([https://dbeaver.io](https://pypi.org/project/clickhouse-connect/)
 ```python
-clickhouse-connect==0.7.7
+clickhouse-connect==0.7.8
 clickhouse-driver==0.2.7
 airflow-providers-clickhouse==0.0.1
 ```
