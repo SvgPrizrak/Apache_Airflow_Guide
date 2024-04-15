@@ -282,6 +282,6 @@ with DAG(
 </p>
 
 <p align="left">
-  <img width="1000" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png">
+  <img width="600" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png">
 </p>
 
