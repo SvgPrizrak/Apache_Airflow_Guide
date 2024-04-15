@@ -118,3 +118,9 @@ P.S. Если конфигурация Python-пакетов будет меня
 <p align="center">
   <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
 </p>
+
+<p align="center">
+  <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_new_db.png">
+</p>
+
+Единственное, что может меняться в данном подключении - это логин и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), по умолчанию они `airflow`, что и написано при настройке подключения.
