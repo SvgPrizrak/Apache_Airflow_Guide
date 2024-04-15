@@ -114,7 +114,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 ## 6. Создание подключений в DBeaver
 Поскольку мы запустили сразу 2 системы, то можем создать 2 соединения: для PostgreSQL и для ClickHouse (в DBeaver: `Базы данных -> Новое соединение`). Для PostgreSQL также была создана дополнительная БД - `postgres_test` для наглядности (в ClickHouse БД названа `default` по умолчанию, будем работать с ней).
 
-### 6.1. Параметры подключения для Postgres видны на скришнотах
+### 6.1. Параметры подключения для PostgreSQL видны на скришнотах
 <p align="center">
   <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
 </p>
@@ -131,3 +131,9 @@ P.S. Если конфигурация Python-пакетов будет меня
 </p>
 
 Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), у меня они `clickhouse_user` и `clickhouse_password`, что и написано при настройке подключения.
+
+### 6.3. Внешний вид в DBeaver
+Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
+<p align="center">
+  <img width="460" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
+</p>
