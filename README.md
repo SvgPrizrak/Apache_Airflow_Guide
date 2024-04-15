@@ -10,9 +10,9 @@
 Все необходимое есть на сайте - они ставятся сразу вместе: https://www.docker.com/products/docker-desktop/
 
 ## 2. Создаем папку (на моем примере это будет папка airflow_docker - далее, корневая директория)
-В созданной папке создаем еще 3 папки: `logs`, `dags`, `plugins`, после чего зайти в IDE корневую директорию и ввести следующие команды:
+В созданной папке создаем еще 3 папки: `logs`, `dags`, `plugins`, после чего зайти в IDE в корневую директорию и ввести следующие команды:
 * Remove-item alias:curl (такая проблема может встречаться на VSCode на платформе Windows);
-* curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml' (команда получения yaml-файла).
+* curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml' (команда получения yaml-файла, версия Apache Airflow может отличаться - см. команду здесь - https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html).
 * далее ОБЯЗАТЕЛЬНО создаем в корневой директории файл '.env' и прописываем там следующие параметры:
 <p align="center">
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
