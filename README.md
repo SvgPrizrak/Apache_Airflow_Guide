@@ -266,10 +266,8 @@ with DAG(
         database='default',
         clickhouse_conn_id="clickhouse_local_test",
         sql="""
-                CREATE TABLE IF NOT EXISTS employee
-            (
-                emp_no  UInt32 NOT NULL
-                                        )
+            CREATE TABLE IF NOT EXISTS employee
+            (emp_no  UInt32 NOT NULL)
             ENGINE = MergeTree()
             PRIMARY KEY (emp_no);
           """
