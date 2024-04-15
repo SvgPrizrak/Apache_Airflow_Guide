@@ -1,0 +1,59 @@
+[2024-04-15T09:37:00.488+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-15T09:37:00.509+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_postgres_dag.create_pet_table manual__2024-04-15T09:36:59.088195+00:00 [queued]>
+[2024-04-15T09:37:00.518+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_postgres_dag.create_pet_table manual__2024-04-15T09:36:59.088195+00:00 [queued]>
+[2024-04-15T09:37:00.519+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-04-15T09:37:00.533+0000] {taskinstance.py:2327} INFO - Executing <Task(PostgresOperator): create_pet_table> on 2024-04-15 09:36:59.088195+00:00
+[2024-04-15T09:37:00.538+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=573) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-04-15T09:37:00.539+0000] {standard_task_runner.py:63} INFO - Started process 574 to run task
+[2024-04-15T09:37:00.539+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'test_postgres_dag', 'create_pet_table', 'manual__2024-04-15T09:36:59.088195+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/test_postgres_dag.py', '--cfg-path', '/tmp/tmps3qaegeg']
+[2024-04-15T09:37:00.541+0000] {standard_task_runner.py:91} INFO - Job 47: Subtask create_pet_table
+[2024-04-15T09:37:00.580+0000] {task_command.py:426} INFO - Running <TaskInstance: test_postgres_dag.create_pet_table manual__2024-04-15T09:36:59.088195+00:00 [running]> on host 6f78617af605
+[2024-04-15T09:37:00.664+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='test_postgres_dag' AIRFLOW_CTX_TASK_ID='create_pet_table' AIRFLOW_CTX_EXECUTION_DATE='2024-04-15T09:36:59.088195+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-15T09:36:59.088195+00:00'
+[2024-04-15T09:37:00.665+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-15T09:37:00.677+0000] {sql.py:276} INFO - Executing: 
+            CREATE TABLE IF NOT EXISTS pet (
+            pet_id INT NOT NULL PRIMARY KEY,
+            name VARCHAR NOT NULL,
+            pet_type VARCHAR NOT NULL,
+            birth_date DATE NOT NULL,
+            owner VARCHAR NOT NULL);
+          
+[2024-04-15T09:37:00.685+0000] {base.py:84} INFO - Using connection ID 'postgres_local_test' for task execution.
+[2024-04-15T09:37:00.693+0000] {base.py:84} INFO - Using connection ID 'postgres_local_test' for task execution.
+[2024-04-15T09:37:00.701+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-15T09:37:00.701+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 397, in run
+    with closing(self.get_conn()) as conn:
+                 ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 161, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "host.docker.internal" (192.168.65.254), port 5432 failed: FATAL:  database "postgres_test1" does not exist
+
+[2024-04-15T09:37:00.710+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=test_postgres_dag, task_id=create_pet_table, execution_date=20240415T093659, start_date=20240415T093700, end_date=20240415T093700
+[2024-04-15T09:37:00.721+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 47 for task create_pet_table (connection to server at "host.docker.internal" (192.168.65.254), port 5432 failed: FATAL:  database "postgres_test1" does not exist
+; 574)
+[2024-04-15T09:37:00.753+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-15T09:37:00.761+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1296: AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-04-15T09:37:00.774+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-15T09:37:00.778+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
