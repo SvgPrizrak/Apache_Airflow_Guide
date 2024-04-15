@@ -108,7 +108,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 В VSCode расположение файлов выглядит следующим образом:
 <p align="center">
-  <img width="410" height="480" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
+  <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
 </p>
 
 ## 6. Создание подключений в DBeaver
