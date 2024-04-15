@@ -114,7 +114,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 ## 6. Создание подключений в DBeaver
 Поскольку мы запустили сразу 2 системы, то можем создать 2 соединения: для PostgreSQL и для ClickHouse (в DBeaver: `Базы данных -> Новое соединение`). Для PostgreSQL также была создана дополнительная БД - `postgres_test` для наглядности (в ClickHouse БД названа `default` по умолчанию, будем работать с ней).
 
-### 6.1. Параметры подключения для PostgreSQL видны на скришнотах
+### 6.1. Параметры подключения для PostgreSQL в DBeaver видны на скришнотах
 <p align="center">
   <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
 </p>
@@ -125,7 +125,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), по умолчанию они `airflow`, что и написано при настройке подключения.
 
-### 6.2. Параметры подключения для ClickHouse видны на скришноте
+### 6.2. Параметры подключения для ClickHouse в DBeaver видны на скришноте
 <p align="center">
   <img width="460" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_creation_db.png">
 </p>
@@ -136,4 +136,33 @@ P.S. Если конфигурация Python-пакетов будет меня
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
 <p align="center">
   <img width="680" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
+</p>
+
+## 7. Создание подключений в Apache Airflow
+Поскольку для создания DAG нам требуется создание подключений не только в DBeaver, но и в Apache Airflow, то следует их создать через `Admin -> Connections`.
+
+Огромное внимание следует обратить на 3 вещи:
+* Connection id - то что будет использоваться при создании DAG (в операторах есть параметр postgres_conn_id или clickhouse_conn_id);
+* Host - host.docker.internal - прописывается при настройке, все остальное прописывается так же, как и при настройке DBeaver;
+* Port для ClickHouse именно 9000, а не 8123;
+* Остальное прописывается интуитивно, по аналогии с DBeaver (см. скриншоты).
+
+### 7.1. Параметры подключения для PostgreSQL в Apache Airflow видны на скришнотах
+<p align="center">
+  <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Postgres_Airflow.png">
+</p>
+
+Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), по умолчанию они `airflow`, что и написано при настройке подключения.
+
+### 7.2. Параметры подключения для ClickHouse в Apache Airflow видны на скришноте
+<p align="center">
+  <img width="460" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_Airflow.png">
+</p>
+
+Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), у меня они `clickhouse_user` и `clickhouse_password`, что и написано при настройке подключения.
+
+### 7.3. Внешний вид в Apache Airflow
+Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
+<p align="center">
+  <img width="680" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
 </p>
