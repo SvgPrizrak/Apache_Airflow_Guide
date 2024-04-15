@@ -20,6 +20,7 @@
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
 </p>
 
+## 3. Корректировка yaml-файла и тестовый запуск Apache Airflow (первичная проверка, что все работает)
 * откорректируем `docker-compose.yaml` для `postgres` (скорее всего просто придется добавить `ports`) и `clickhouse` (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - `CLICKHOUSE_USER` и `CLICKHOUSE_PASSWORD` можно поменять под себя):
 
 ```docker
@@ -58,3 +59,17 @@ clickhouse:
       - CLICKHOUSE_PASSWORD=clickhouse_password
       # Другие переменные окружения для настройки ClickHouse
 ```
+
+* создадим папку `clickhouse_data` в корневой директории (удобнее всего сделать, находясь в корневой директории командой `mkdir clickhouse_data`)
+  
+* в терминале IDE прописываем:
+  ```docker
+  docker-compose up airflow-init
+  ```
+  
+- в течение нескольких минут качаются образы и собирается контейнер, далее прописываем команду:
+  ```docker
+  docker-compose up
+  ```
+  
+- заходим на [локалхост](http://localhost:8080/) и вводим данные для входа логин/пароль (по умолчанию `airflow` для логина и пароля) Airflow.
