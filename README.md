@@ -285,3 +285,5 @@ with DAG(
   <img width="500" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png">
 </p>
 
+## 9. Файлы
+Если кому-то лень делать собственную конфигурацию файлов, то копию корневой директории сделал здесь же.
