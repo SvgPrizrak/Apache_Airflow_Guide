@@ -9,5 +9,7 @@
 ## 1. Установка Docker и Docker Compose
 Все необходимое есть на сайте - они ставятся сразу вместе: https://www.docker.com/products/docker-desktop/
 
-## 2. Создаем папку (на моем примере это будет папка airflow_docker)
-В созданной папке создаем еще 3 папки: `logs`, 'dags', 'plugins'
+## 2. Создаем папку (на моем примере это будет папка airflow_docker - корневая директория)
+В созданной папке создаем еще 3 папки: `logs`, `dags`, `plugins`, после чего зайти в IDE корневую директорию и ввести следующую команду
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml'
+
