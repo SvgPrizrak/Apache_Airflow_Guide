@@ -116,7 +116,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 ### 6.1. Параметры подключения для Postgres видны на скришноте
 <p align="center">
-  <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
+  <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
 </p>
 
 <p align="center">
