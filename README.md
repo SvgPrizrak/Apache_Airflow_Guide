@@ -14,7 +14,6 @@
 * Remove-item alias:curl (такая проблема может встречаться на VSCode на платформе Windows);
 * curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml' (команда получения yaml-файла).
 * далее ОБЯЗАТЕЛЬНО создаем файл '.env' и прописываем там следующие параметры:
-![image](https://github.com/SvgPrizrak/Apache_Airflow_Guide/assets/43899810/8e740598-1519-497d-aaee-6b52b979314e)
 
 
 
