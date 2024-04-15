@@ -110,3 +110,8 @@ P.S. Если конфигурация Python-пакетов будет меня
 <p align="center">
   <img width="450" height="480" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
 </p>
+
+## 6. Создание подключений в DBeaver
+Поскольку мы запустили сразу 2 БД, то можем создать 2 подключения: для PostgreSQL и для ClickHouse (в DBeaver: `Базы данных -> Новое соединение`).
+Параметры подключения для Postgres:
+
