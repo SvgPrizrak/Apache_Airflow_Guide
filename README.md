@@ -108,5 +108,5 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 В VSCode расположение файлов выглядит следующим образом:
 <p align="center">
-  <img width="550" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
+  <img width="500" height="470" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
 </p>
