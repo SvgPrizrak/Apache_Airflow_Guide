@@ -11,10 +11,10 @@
 
 ## 2. Создаем папку (на моем примере это будет папка airflow_docker - далее, корневая директория)
 В корневой директории создаем еще 3 папки: `logs`, `dags`, `plugins`, после чего зайти через IDE в корневую директорию и ввести следующие команды:
-* docker --version (проверка версии Docker);
-* docker-compose --version (проверка версии Docker Compose);
-* Remove-item alias:curl (такая проблема может встречаться на VSCode на платформе Windows, ***на Linux-платформах вводить скорее всего не надо***);
-* curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml' (это команда для получения yaml-файла, версия Apache Airflow может отличаться - см. команду [здесь](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)).
+* `docker --version` (проверка версии Docker);
+* `docker-compose --version` (проверка версии Docker Compose);
+* `Remove-item alias:curl` (такая проблема может встречаться на VSCode на платформе Windows, ***на Linux-платформах вводить скорее всего не надо***);
+* `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml'` (это команда для получения yaml-файла, версия Apache Airflow может отличаться - см. команду [здесь](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)).
 * далее ОБЯЗАТЕЛЬНО создаем в корневой директории файл `.env` и прописываем там следующие параметры:
 <p align="center">
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
@@ -100,3 +100,8 @@ RUN pip install --no-cache-dir -r /requirements.txt
 * в docker-compose.yaml поменять 52 строку на `image: ${AIRFLOW_IMAGE_NAME:-extending_airflow:latest}` (номер строки может отличаться, важно, что это самый первый `image` в файле);
 * запустить команду в терминале IDE `docker compose up -d --no-deps --build airflow-webserver airflow-scheduler`;
 * пересобрать контейнер `docker-compose up -d` (если контейнеры были погашены).
+
+P.S. Если конфигурация Python-пакетов будет меняться, то все эти 4 команды надо запускать заново!!!
+
+## 5. Добавление Python-пакета, содержащего ClickHouseOperator
+По умолчанию в Apache Airflow отсутствует возможность создавать ClickHouseOperator для создания, изменения и удаления таблиц (и, что самое главное, обновления данных в автоматическом режиме). Этот пакет не удалось поставить через средства из п.4, поэтому пришлось скачать файл из этой [директории](https://github.com/bryzgaloff/airflow-clickhouse-plugin) - надо содержимое папки `airflow_clickhouse_plugin` перенести в папку `dags` корневой директории, чего должно быть достаточно для установки плагина (именно так, чтобы не пришлось править пути). 
