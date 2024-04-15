@@ -15,5 +15,4 @@
 * curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml' (команда получения yaml-файла).
 * далее ОБЯЗАТЕЛЬНО создаем в корневой директории файл '.env' и прописываем там следующие параметры:
 
-![Image alt]([https://github.com/SvgPrzrak/Apache_Airflow_Guide/raw/main/pictures/AirFlow_Users.png])
-
+![Image alt]([https://github.com/{username}/{repository}/raw/{branch}/{path}/image.png](https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png))
