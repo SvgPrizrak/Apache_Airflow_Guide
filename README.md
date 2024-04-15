@@ -8,3 +8,5 @@
 
 ## 1. Установка Docker и Docker Compose
 Все необходимое есть на сайте - они ставятся сразу вместе: https://www.docker.com/products/docker-desktop/
+
+## 2. Создаем папку (на моем примере это будет папка airflow_docker)
