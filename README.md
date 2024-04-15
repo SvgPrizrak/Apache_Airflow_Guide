@@ -168,7 +168,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 </p>
 
 ## 8. Создание DAG и тестирование в Apache Airflow
-В папке я создал 2 тестовых файла: `test_postgres_dag.py` и `test_clickhouse_dag.py`
+В папке `dags` корневой директории я создал 2 тестовых файла: `test_postgres_dag.py` и `test_clickhouse_dag.py` - оба файла направлены на добавление таблиц и изменение данных в них, т.е. мы можем проверить правильность выполнения задач как через Apache Airflow, так и через DBeaver.
 
 ### 8.1. Содержимое `test_postgres_dag.py`:
 ```python
@@ -275,3 +275,13 @@ with DAG(
 
     create_pet_table
 ```
+
+### 8.3. Внешний вид DAG (обновления тасок) в Apache Airflow и новых таблиц в DBeaver
+<p align="left">
+  <img width="1000" height="500" src=(https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_DAGs.png">
+</p>
+
+<p align="left">
+  <img width="1000" height="500" src=(https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png)">
+</p>
+
