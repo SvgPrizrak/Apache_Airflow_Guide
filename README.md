@@ -60,7 +60,7 @@ clickhouse:
       # Другие переменные окружения для настройки ClickHouse
 ```
 
-* создадим папку `clickhouse_data` в корневой директории (удобнее всего сделать, находясь в корневой директории командой `mkdir clickhouse_data`)
+* создадим папку `clickhouse_data` в корневой директории (удобнее всего сделать, находясь в корневой директории командой `mkdir clickhouse_data`);
   
 * в терминале IDE прописываем:
   ```docker
@@ -71,9 +71,18 @@ clickhouse:
   ```docker
   docker-compose up
   ```
-  
+- после инициализации в папку `clickhouse_data` должны добавиться новые папки и файлы;
 - заходим на [локалхост](http://localhost:8080/) и вводим данные для входа логин/пароль (по умолчанию `airflow` для логина и пароля) Airflow.
 
 <p align="center">
   <img width="600" height="220" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_main_menu.png">
 </p>
+
+## 4. Добавление новых пакетов
+Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного по-другому, то стоит создать 2 файла: `requirements.txt` и `Dockerfile`
+Содержимое 1 файла: 
+```python
+clickhouse-connect==0.7.7
+clickhouse-driver==0.2.7
+airflow-providers-clickhouse==0.0.1
+```
