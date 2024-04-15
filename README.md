@@ -127,7 +127,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 ### 6.2. Параметры подключения для ClickHouse видны на скришноте
 <p align="center">
-  <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_creation_db.png">
+  <img width="460" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_creation_db.png">
 </p>
 
 Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), у меня они `clickhouse_user` и `clickhouse_password`, что и написано при настройке подключения.
