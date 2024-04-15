@@ -278,10 +278,10 @@ with DAG(
 
 ### 8.3. Внешний вид DAG (обновления тасок) в Apache Airflow и новых таблиц в DBeaver
 <p align="left">
-  <img width="1000" height="500" src=(https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_DAGs.png">
+  <img width="1000" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_DAGs.png">
 </p>
 
 <p align="left">
-  <img width="1000" height="500" src=(https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png)">
+  <img width="1000" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png">
 </p>
 
