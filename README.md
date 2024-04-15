@@ -21,21 +21,11 @@
 </p>
 * откорректируем docker-compose.yaml для postgres (скорее всего просто придется добавить порты) и clickhouse (полностью добавить все строки):
 ```docker
-  services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
-      interval: 10s
-      retries: 5
-      start_period: 5s
-    restart: always
-  ```
+FROM python
+  
+WORKDIR /usr/src/app
+  
+COPY . /usr/src/app
+  
+EXPOSE 80
+```
