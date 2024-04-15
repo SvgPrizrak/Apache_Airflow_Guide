@@ -19,13 +19,24 @@
 <p align="center">
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
 </p>
-* откорректируем docker-compose.yaml для postgres (скорее всего просто придется добавить порты) и clickhouse (полностью добавить все строки):
-  ```docker
-  FROM python
-  
-  WORKDIR /usr/src/app
-  
-  COPY . /usr/src/app
-  
-  EXPOSE 80
-  ```
+* откорректируем docker-compose.yaml для `postgres` (скорее всего просто придется добавить `ports`) и clickhouse (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует):
+
+```docker
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+```
