@@ -115,4 +115,6 @@ P.S. Если конфигурация Python-пакетов будет меня
 Поскольку мы запустили сразу 2 системы, то можем создать 2 соединения: для PostgreSQL и для ClickHouse (в DBeaver: `Базы данных -> Новое соединение`). Для PostgreSQL также была создана дополнительная БД - `postgres_test` для наглядности (в ClickHouse БД названа `default` по умолчанию, будем работать с ней).
 
 ### 6.1. Параметры подключения для Postgres видны на скришноте
-
+<p align="center">
+  <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/PostgreSQL_creation_db.png">
+</p>
