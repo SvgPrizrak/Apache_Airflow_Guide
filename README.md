@@ -19,7 +19,7 @@
 <p align="center">
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
 </p>
-* откорректируем docker-compose.yaml для `postgres` (скорее всего просто придется добавить `ports`) и clickhouse (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует):
+* откорректируем docker-compose.yaml для `postgres` (скорее всего просто придется добавить `ports`) и clickhouse (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - CLICKHOUSE_USER и CLICKHOUSE_PASSWORD можно поменять под себя):
 
 ```docker
 services:
@@ -39,4 +39,21 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+```
+
+```docker
+clickhouse:
+    image: yandex/clickhouse-server
+    restart: always
+    ports:
+      - "8123:8123"  # Порт для HTTP-интерфейса
+      - "9000:9000"  # Порт для внешних подключений
+    volumes:
+      - ./clickhouse_data:/var/lib/clickhouse
+      - ./clickhouse_data:/config:/etc/clickhouse-server
+    environment:
+      - CLICKHOUSE_CONFIG_DIR=/etc/clickhouse-server
+      - CLICKHOUSE_USER=clickhouse_user
+      - CLICKHOUSE_PASSWORD=clickhouse_password
+      # Другие переменные окружения для настройки ClickHouse
 ```
