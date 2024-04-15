@@ -163,8 +163,8 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 ### 7.3. Внешний вид в Apache Airflow
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
-<p align="center">
-  <src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
+<p align="left">
+  <img width="1000" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
 </p>
 
 ## 8. Создание DAG и тестирование в Apache Airflow
