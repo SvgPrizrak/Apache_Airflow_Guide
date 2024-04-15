@@ -135,7 +135,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 ### 6.3. Внешний вид в DBeaver
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
 <p align="center">
-  <img width="680" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
+  <img width="710" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
 </p>
 
 ## 7. Создание подключений в Apache Airflow
@@ -164,5 +164,5 @@ P.S. Если конфигурация Python-пакетов будет меня
 ### 7.3. Внешний вид в Apache Airflow
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
 <p align="center">
-  <img width="1000" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
+  <img width="1200" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
 </p>
