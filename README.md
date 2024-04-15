@@ -18,6 +18,7 @@
   <img width="300" height="80" src="https://raw.githubusercontent.com/SvgPrizrak/Apache_Airflow_Guide/main/pictures/AirFlow_Users.png">
 </p>
 * откорректируем docker-compose.yaml для `postgres` и `clickhouse`:
+'''
 services:
   postgres:
     image: postgres:13
@@ -35,4 +36,4 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-
+'''
