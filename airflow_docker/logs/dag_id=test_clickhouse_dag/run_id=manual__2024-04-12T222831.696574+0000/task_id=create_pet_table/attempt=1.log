@@ -1,0 +1,76 @@
+[2024-04-12T22:28:33.162+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-12T22:28:33.183+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_clickhouse_dag.create_pet_table manual__2024-04-12T22:28:31.696574+00:00 [queued]>
+[2024-04-12T22:28:33.190+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_clickhouse_dag.create_pet_table manual__2024-04-12T22:28:31.696574+00:00 [queued]>
+[2024-04-12T22:28:33.190+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2024-04-12T22:28:33.203+0000] {taskinstance.py:2327} INFO - Executing <Task(ClickHouseOperator): create_pet_table> on 2024-04-12 22:28:31.696574+00:00
+[2024-04-12T22:28:33.208+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=597) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-04-12T22:28:33.209+0000] {standard_task_runner.py:63} INFO - Started process 598 to run task
+[2024-04-12T22:28:33.209+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'test_clickhouse_dag', 'create_pet_table', 'manual__2024-04-12T22:28:31.696574+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/test_clickhouse_dag.py', '--cfg-path', '/tmp/tmp0zv87cou']
+[2024-04-12T22:28:33.212+0000] {standard_task_runner.py:91} INFO - Job 25: Subtask create_pet_table
+[2024-04-12T22:28:33.251+0000] {task_command.py:426} INFO - Running <TaskInstance: test_clickhouse_dag.create_pet_table manual__2024-04-12T22:28:31.696574+00:00 [running]> on host 5a7e88883700
+[2024-04-12T22:28:33.322+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='test_clickhouse_dag' AIRFLOW_CTX_TASK_ID='create_pet_table' AIRFLOW_CTX_EXECUTION_DATE='2024-04-12T22:28:31.696574+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-12T22:28:31.696574+00:00'
+[2024-04-12T22:28:33.323+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-12T22:28:33.342+0000] {base.py:84} INFO - Using connection ID 'clickhouse_local_test' for task execution.
+[2024-04-12T22:28:33.343+0000] {clickhouse.py:79} INFO - 
+            CREATE TABLE IF NOT EXISTS pet (
+            pet_id INT NOT NULL PRIMARY KEY,
+            name VARCHAR NOT NULL,
+            pet_type VARCHAR NOT NULL,
+            birth_date DATE NOT NULL,
+            owner VARCHAR NOT NULL);
+          
+[2024-04-12T22:28:33.344+0000] {connection.py:408} WARNING - Failed to connect to localhost:8123
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 396, in connect
+    return self._init_connection(host, port)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 326, in _init_connection
+    self.socket = self._create_socket(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 297, in _create_socket
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 288, in _create_socket
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2024-04-12T22:28:33.345+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-12T22:28:33.346+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/airflow_clickhouse_plugin/operators/clickhouse.py", line 83, in execute
+    return self._hook_execute()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/airflow_clickhouse_plugin/operators/clickhouse.py", line 69, in _hook_execute
+    return hook.execute(
+           ^^^^^^^^^^^^^
+  File "/opt/airflow/dags/airflow_clickhouse_plugin/hooks/clickhouse.py", line 80, in execute
+    last_result = conn.execute(
+                  ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 370, in execute
+    with self.disconnect_on_error(query, settings):
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 314, in disconnect_on_error
+    self.establish_connection(settings)
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 301, in establish_connection
+    self.connection.force_connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 254, in force_connect
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 417, in connect
+    raise err
+clickhouse_driver.errors.NetworkError: Code: 210. Connection refused (localhost:8123)
+[2024-04-12T22:28:33.360+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=test_clickhouse_dag, task_id=create_pet_table, execution_date=20240412T222831, start_date=20240412T222833, end_date=20240412T222833
+[2024-04-12T22:28:33.369+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 25 for task create_pet_table (Code: 210. Connection refused (localhost:8123); 598)
+[2024-04-12T22:28:33.383+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-12T22:28:33.402+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-12T22:28:33.406+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
