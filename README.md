@@ -135,5 +135,5 @@ P.S. Если конфигурация Python-пакетов будет меня
 ### 6.3. Внешний вид в DBeaver
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
 <p align="center">
-  <img width="600" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
+  <img width="680" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/databases_configuration.png">
 </p>
