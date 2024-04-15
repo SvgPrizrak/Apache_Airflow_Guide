@@ -108,7 +108,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 В VSCode расположение файлов выглядит следующим образом:
 <p align="center">
-  <img width="370" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
+  <img width="350" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
 </p>
 
 ## 6. Создание подключений в DBeaver
@@ -149,14 +149,14 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 ### 7.1. Параметры подключения для PostgreSQL в Apache Airflow видны на скришнотах
 <p align="center">
-  <img width="420" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Postgres_Airflow.png">
+  <img width="1000" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Postgres_Airflow.png">
 </p>
 
 Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), по умолчанию они `airflow`, что и написано при настройке подключения.
 
 ### 7.2. Параметры подключения для ClickHouse в Apache Airflow видны на скришноте
 <p align="center">
-  <img width="460" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_Airflow.png">
+  <img width="1000" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/ClickHouse_Airflow.png">
 </p>
 
 Единственное, что может меняться в данном подключении - это логин (aka пользователь) и пароль, но тогда следует менять их и в `docker-compose.yaml` (см. п.3 в добавленном коде), у меня они `clickhouse_user` и `clickhouse_password`, что и написано при настройке подключения.
@@ -164,5 +164,5 @@ P.S. Если конфигурация Python-пакетов будет меня
 ### 7.3. Внешний вид в Apache Airflow
 Расположение БД выглядит после настройки подключений следующим образом - можно переходить к следующим пунктам.
 <p align="center">
-  <img width="680" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
+  <img width="1000" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_connections.png">
 </p>
