@@ -287,6 +287,7 @@ with DAG(
   <img width="500" height="500" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/DBeaver_tables.png">
 </p>
 
+P.S. Подключаться к БД ClickHouse теперь возможно 2 способами: через `airflow_clickhouse_plugin` и через `clickhouse_connect` (см. п.9 - тестовые DAG были созданы именно ради этого).
 ## 9. Файлы
 Копия корневой директории `airflow_docker` есть в списке файлов данного репозитория с уже исправленными/добавленными файлами и библиотеками, а также всеми тестовыми DAG. После скачивания и распаковки архива `airflow_docker.rar` нужно проделать следующие действия:
 * проверить наличие всех программ из п.1 и вводных данных;
