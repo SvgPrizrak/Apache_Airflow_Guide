@@ -169,9 +169,9 @@ P.S. Если конфигурация Python-пакетов будет меня
 </p>
 
 ## 8. Создание DAG и тестирование в Apache Airflow
-В папке `dags` корневой директории я создал 2 тестовых файла: `test_postgres_dag.py` и `test_clickhouse_dag.py` - оба файла направлены на добавление таблиц и изменение данных в них, т.е. мы можем проверить правильность выполнения задач как через Apache Airflow, так и через DBeaver.
+В папке `dags` корневой директории я создал 2 тестовых файла: `test_postgres_operator_dag.py` и `test_clickhouse_operator_dag.py` - оба файла направлены на добавление таблиц и изменение данных в них, т.е. мы можем проверить правильность выполнения задач как через Apache Airflow, так и через DBeaver.
 
-### 8.1. Содержимое `test_postgres_dag.py`:
+### 8.1. Содержимое `test_postgres_operator_dag.py`:
 ```python
 from airflow import DAG
 from airflow.utils.dates import days_ago
@@ -236,7 +236,7 @@ with DAG(
     create_pet_table >> delete_from_pet_table >> insert_to_pet_table
 ```
 
-### 8.2. Содержимое `test_clickhouse_dag.py`:
+### 8.2. Содержимое `test_clickhouse_operator_dag.py`:
 ```python
 from airflow import DAG
 from airflow.utils.dates import days_ago
