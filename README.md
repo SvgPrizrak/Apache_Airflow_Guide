@@ -22,7 +22,7 @@ AIRFLOW_GID=0
 ```
 
 ## 3. Корректировка yaml-файла и тестовый запуск Apache Airflow (первичная проверка, что все работает)
-* откорректируем `docker-compose.yaml` для `postgres` (скорее всего просто придется добавить `ports`) и `clickhouse` (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - `CLICKHOUSE_USER` и `CLICKHOUSE_PASSWORD` можно поменять под себя):
+* откорректируем `docker-compose.yaml` для `postgres` (скорее всего просто придется добавить `ports`) и `clickhouse` (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - `CLICKHOUSE_USER` и `CLICKHOUSE_PASSWORD` можно поменять под себя, образ именно `yandex`, на `clickhouse` возникают проблемы с записью файлов):
 
 ```docker
 services:
