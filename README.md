@@ -277,7 +277,7 @@ with DAG(
     create_pet_table
 ```
 
-### 8.3. Внешний вид DAG (обновления тасок) в Apache Airflow и новых таблиц в DBeaver
+### 8.3. Внешний вид DAG (обновления тасок) в Apache Airflow (добавил еще несколько тестовых для проверки BashOperator и PythonOperator) и новых таблиц в DBeaver
 <p align="left">
   <img width="1000" height="250" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/Airflow_DAGs.png">
 </p>
