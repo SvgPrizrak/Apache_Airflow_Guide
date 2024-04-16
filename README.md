@@ -45,7 +45,8 @@ services:
 ```
 
 ```docker
-clickhouse:
+services:
+  clickhouse:
     image: yandex/clickhouse-server
     restart: always
     ports:
