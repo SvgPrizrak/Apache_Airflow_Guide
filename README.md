@@ -296,4 +296,4 @@ P.S. Подключаться к БД ClickHouse теперь возможно 2
 * перейти к п.6-8 и начать создавать подключения в DBeaver и Apache Airflow.
 
 ## 10. Интеграция PostrgeSQL с Apache Spark
-Гайд по установке Apache Spark приложен [здесь](https://github.com/SvgPrizrak/Apache_Spark_Guide).
+Гайд по установке Apache Spark приложен [здесь](https://github.com/SvgPrizrak/Apache_Spark_Guide). Для интеграции созданной ранее БД на базе PostgreSQL с установленным Apache Spark требуется скачать JDBC драйвер для PostgeSQL на официальном [сайте](https://jdbc.postgresql.org/download/), а также последнюю версию JAVA ([скачать](https://www.java.com/ru/download/manual.jsp), не путать с JDK). Скачанный .jar-файл с JDBC-драйвером нужно перенести в папку `jars` директории с Apache Spark, после чего можно проверять подключение к базе с помощью тестового ноутбука `test_pyspark_connect_to_postgres.ipynb` (следует внимательно проверить пути и версию JDBC-драйвера, она может отличаться от моей в ноутбуке, для этого можно поменять константы).
