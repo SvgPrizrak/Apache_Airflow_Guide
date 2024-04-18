@@ -295,4 +295,5 @@ P.S. Подключаться к БД ClickHouse теперь возможно 2
 * запустить команды в терминале IDE `docker build . --tag extending_airflow:latest`, `docker compose up -d --no-deps --build airflow-webserver airflow-scheduler`, `docker-compose up -d` (должны установиться файлы в `clickhouse_data` и библиотеки, кроме ClickHouseOperator - она уже находится в корневой директории);
 * перейти к п.6-8 и начать создавать подключения в DBeaver и Apache Airflow.
 
-## 10. Интеграция с Apache Spark
+## 10. Интеграция PostrgeSQL с Apache Spark
+Гайд по установке Apache Spark приложен [здесь](https://github.com/SvgPrizrak/Apache_Spark_Guide).
