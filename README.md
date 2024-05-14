@@ -14,7 +14,7 @@
 * `docker --version` (проверка версии Docker);
 * `docker-compose --version` (проверка версии Docker Compose);
 * `Remove-item alias:curl` (такая проблема может встречаться на VSCode на платформе Windows, ***на Linux-платформах вводить скорее всего не надо***);
-* `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml'` (это команда для получения yaml-файла, версия Apache Airflow может отличаться - см. команду [здесь](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)).
+* `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.1/docker-compose.yaml'` (это команда для получения yaml-файла, версия Apache Airflow может отличаться - см. команду [здесь](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)).
 * далее ОБЯЗАТЕЛЬНО создаем в корневой директории файл `.env` и прописываем там следующие параметры:
 ```docker
 AIRFLOW_UID=50000
@@ -22,12 +22,12 @@ AIRFLOW_GID=0
 ```
 
 ## 3. Корректировка yaml-файла и тестовый запуск Apache Airflow (первичная проверка, что все работает)
-* откорректируем `docker-compose.yaml` для `postgres` (скорее всего просто придется добавить `ports`) и `clickhouse` (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - `CLICKHOUSE_USER` и `CLICKHOUSE_PASSWORD` можно поменять под себя, образ именно `yandex`, на `clickhouse` возникают проблемы с записью файлов):
+* откорректируем `docker-compose.yaml` для `postgres` (скорее всего просто придется добавить `ports`) и `clickhouse` (полностью добавить все строки, в дефолтной конфигурации clickhouse отсутствует - `CLICKHOUSE_USER` и `CLICKHOUSE_PASSWORD` можно поменять под себя); в самом конце файла не забываем подправить `volumes:` (иначе может возникнуть проблема с ClickHouse):
 
 ```docker
 services:
   postgres:
-    image: postgres:13
+    image: postgres:latest
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -47,19 +47,29 @@ services:
 ```docker
 services:
   clickhouse:
-    image: yandex/clickhouse-server
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse-server
+    privileged: true
+    user: root
     restart: always
     ports:
       - "8123:8123"  # Порт для HTTP-интерфейса
       - "9000:9000"  # Порт для внешних подключений
+      - "9009:9009"  # Интерфейс для взаимодействия с сервером
     volumes:
-      - ./clickhouse_data:/var/lib/clickhouse
-      - ./clickhouse_data:/config:/etc/clickhouse-server
+      - ./clickhouse_data:/var/lib/clickhouse  # Данные ClickHouse
+      - ./clickhouse_data:/config:/etc/clickhouse-server  # Конфигурационные файлы
+      - data:/var/lib/clickhouse:wr # Создание volume для корректных записи и чтения
     environment:
+      - CLICKHOUSE_DB=default
       - CLICKHOUSE_CONFIG_DIR=/etc/clickhouse-server
       - CLICKHOUSE_USER=clickhouse_user
       - CLICKHOUSE_PASSWORD=clickhouse_password
       # Другие переменные окружения для настройки ClickHouse
+
+volumes:
+  postgres-db-volume:
+  data:
 ```
 
 * желательно исправить пункт `AIRFLOW__CORE__LOAD_EXAMPLES` с `true` на `false`, чтобы не загружать тестовые DAG;
@@ -92,7 +102,7 @@ airflow-providers-clickhouse==0.0.1
 
 Содержимое файла `Dockerfile` - код, позволяющий устанавливать пакеты через `pip install` (опять-таки внимательно смотрим на версию вашего Apache Airflow):
 ```docker
-FROM apache/airflow:2.9.0
+FROM apache/airflow:2.9.1
 COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /requirements.txt
