@@ -102,7 +102,7 @@ airflow-providers-clickhouse==0.0.1
 
 Содержимое файла `Dockerfile` - код, позволяющий устанавливать пакеты через `pip install` (опять-таки внимательно смотрим на версию вашего Apache Airflow):
 ```docker
-FROM apache/airflow:2.9.1
+FROM apache/airflow:latest-python3.12
 COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /requirements.txt
