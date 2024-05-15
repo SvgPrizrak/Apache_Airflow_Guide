@@ -92,8 +92,8 @@ volumes:
 </p>
 
 ## 4. Добавление новых Python-пакетов
-Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 2 файла в корневой директории: `requirements.txt` и `Dockerfile`.
-Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); последний пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/).
+Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 3 файла в корневой директории: `requirements.txt`, `Dockerfile` и `.dockerignore`.
+Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); третий пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/).
 ```python
 clickhouse-connect==0.7.8
 clickhouse-driver==0.2.7
