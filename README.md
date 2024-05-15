@@ -177,7 +177,7 @@ P.S. Если конфигурация Python-пакетов будет меня
 
 В VSCode расположение файлов выглядит следующим образом (папки `clickhouse_data` и `config` будут пустыми из-за настроек Docker-контейнера, их можно удалить, это связано с настройками новых версий ClickHouse):
 <p align="center">
-  <img width="350" height="490" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
+  <img width="430" height="470" src="https://github.com/SvgPrizrak/Apache_Airflow_Guide/blob/main/pictures/AirFlow_files.png">
 </p>
 
 ## 6. Создание подключений в DBeaver
