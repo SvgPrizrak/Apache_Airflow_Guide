@@ -103,7 +103,7 @@ findspark==2.0.1
 py4j==0.10.9.7
 ```
 
-Содержимое файла `Dockerfile` - код, позволяющий устанавливать пакеты через `pip install` и команды Linux (опять-таки внимательно смотрим на версию вашего Apache Airflow и Python):
+Содержимое файла `Dockerfile` - код, позволяющий устанавливать пакеты через `pip install` и команды Linux (опять-таки внимательно смотрим на версию вашего Apache Airflow и Python, фактически это представляет собой симуляцию локальной установки Apache Spark, но внутри Docker-контейнера):
 ```docker
 FROM apache/airflow:latest-python3.12
 
@@ -368,4 +368,7 @@ P.S. Подключаться к БД ClickHouse теперь возможно 2
 
 ## 11. Интеграция ClickHouse с Apache Spark
 Для интеграции созданной ранее БД на базе ClickHouse с установленным Apache Spark требуется скачать JDBC драйвер для ClickHouse на официальном [сайте](https://github.com/ClickHouse/clickhouse-java) в разделе `Releases`. Лучше всего брать файл с пометкой `all` во избежание казусов (в моем случае последняя версия была - `clickhouse-jdbc-0.6.0-patch3-all.jar`). Скачанный .jar-файл с JDBC-драйвером нужно перенести в папку `jars` директории с Apache Spark, после чего можно проверять подключение к базе с помощью тестового ноутбука `test_pyspark_connect_to_clickhouse.ipynb` (следует внимательно проверить пути и версию JDBC-драйвера, она может отличаться от моей в ноутбуке, для этого можно поменять константы). Также можно проверить правильность работы Apache Spark в ноутбуке `PySpark Training.ipynb` (там реализовано большинство базовых функций, можно посмотреть, что они корректно отрабатывают).
+
+## 12. Работа с Apache Spark + PostgreSQL/ClickHouse внутри Docker-контейнера
+Для тестирования работы Apache Spark внутри Docker-контейнера с Apache Airflow были созданы несколько DAGов: `test_pyspark_basic_operations_dag.py`, `test_pyspark_clickhouse_dag.py` и `test_pyspark_postgres_dag.py`, которые дублируют работу ноутбуков `PySpark Training.ipynb`, `test_pyspark_connect_to_clickhouse.ipynb` и `test_pyspark_connect_to_postgres.ipynb` соответственно, только с учетом архитектуры графов (`localhost` заменен на `host.docker.internal`, в остальном код почти аналогичен). Сохраненной конфигурации файлов из п.9 должно быть достаточно для проверки правильности работы Apache Spark внутри Docker-контейнера. 
 
