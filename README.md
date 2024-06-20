@@ -3,7 +3,7 @@
 Необходимый стек для выполнения процедур: 
 * DBeaver ([скачать](https://dbeaver.io/), или иная СУБД, способная подключаться к PostgreSQL и ClickHouse);
 * VSCode ([скачать](https://code.visualstudio.com/), я использовал его) / PyCharm ([скачать](https://www.jetbrains.com/ru-ru/pycharm/)) или любая другая IDE, работающая с Python;
-* Python ([скачать](https://www.python.org/), можно взять самую новую версию проблем быть не должно - на момент написания гайда 3.12.3);
+* Python ([скачать](https://www.python.org/), можно взять самую новую версию проблем быть не должно - на момент написания гайда 3.12.4);
 * Docker (см. ниже).
 
 ## 1. Установка Docker и Docker Compose
@@ -95,8 +95,8 @@ volumes:
 Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 3 файла в корневой директории: `requirements.txt`, `Dockerfile` и `.dockerignore`.
 Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); третий пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/); четвертый и пятый пакеты - это [pyspark](https://pypi.org/project/pyspark/) и [findspark](https://pypi.org/project/findspark/) - пакеты для инициализации подключения Apache Spark для работы с ним непосредственно в Apache Airflow; последний [пакет](https://pypi.org/project/py4j/) - позволяет запускать Python совместно с Java, что потребуется для работы Apache Spark).
 ```python
-clickhouse-connect==0.7.9
-clickhouse-driver==0.2.7
+clickhouse-connect==0.7.12
+clickhouse-driver==0.2.8
 airflow-providers-clickhouse==0.0.1
 pyspark==3.5.1
 findspark==2.0.1
