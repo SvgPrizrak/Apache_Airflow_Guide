@@ -95,7 +95,7 @@ volumes:
 Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 3 файла в корневой директории: `requirements.txt`, `Dockerfile` и `.dockerignore`.
 Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); третий пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/); четвертый и пятый пакеты - это [pyspark](https://pypi.org/project/pyspark/) и [findspark](https://pypi.org/project/findspark/) - пакеты для инициализации подключения Apache Spark для работы с ним непосредственно в Apache Airflow; последний [пакет](https://pypi.org/project/py4j/) - позволяет запускать Python совместно с Java, что потребуется для работы Apache Spark).
 ```python
-clickhouse-connect==0.7.12
+clickhouse-connect==0.7.16
 clickhouse-driver==0.2.8
 airflow-providers-clickhouse==0.0.1
 pyspark==3.5.1
@@ -117,15 +117,14 @@ RUN apt-get update && \
 
 # Установка JDK
 RUN wget https://download.oracle.com/java/22/latest/jdk-22_linux-x64_bin.tar.gz && \
-    mkdir -p /opt/java/jdk-22 && \
+    mkdir -p /opt/java && \
     tar -xvf jdk-22_linux-x64_bin.tar.gz -C /opt/java && \
     rm jdk-22_linux-x64_bin.tar.gz
 
 # Установка JAVA
-RUN wget -O jre-8u411-linux-x64.tar.gz https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249840_43d62d619be4e416215729597d70b8ac && \
-    mkdir -p /opt/java/jre-1.8 && \
-    tar -xvf jre-8u411-linux-x64.tar.gz -C /opt/java && \
-    rm jre-8u411-linux-x64.tar.gz
+RUN wget -O jre-8u421-linux-x64.tar.gz https://javadl.oracle.com/webapps/download/AutoDL?BundleId=250118_d8aa705069af427f9b83e66b34f5e380 && \
+    tar -xvf jre-8u421-linux-x64.tar.gz -C /opt/java && \
+    rm jre-8u421-linux-x64.tar.gz
 
 # Установка Apache Spark
 RUN wget https://downloads.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz && \
@@ -135,15 +134,15 @@ RUN wget https://downloads.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.
 
 # загрузка JDBC-драйверов для PostgreSQL и ClickHouse и перенос их в папку jars
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.7.3.jar && \
-    wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.6.0-patch3/clickhouse-jdbc-0.6.0-patch3-all.jar && \
+    wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.6.3/clickhouse-jdbc-0.6.3-all.jar && \
     mv postgresql-42.7.3.jar /opt/spark/spark-3.5.1-bin-hadoop3/jars && \
-    mv clickhouse-jdbc-0.6.0-patch3-all.jar /opt/spark/spark-3.5.1-bin-hadoop3/jars
+    mv clickhouse-jdbc-0.6.3-all.jar /opt/spark/spark-3.5.1-bin-hadoop3/jars
 
 # Возвращение к пользователю по умолчанию
 USER airflow
 
 # Установка переменных окружения
-ENV JAVA_HOME=/opt/java/jdk-22.0.1
+ENV JAVA_HOME=/opt/java/jdk-22.0.2
 ENV SPARK_HOME=/opt/spark/spark-3.5.1-bin-hadoop3
 ENV PATH=$PATH:$JAVA_HOME/bin
 ENV PATH=$PATH:$SPARK_HOME/bin
