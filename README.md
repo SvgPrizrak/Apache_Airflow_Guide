@@ -127,23 +127,23 @@ RUN wget -O jre-8u421-linux-x64.tar.gz https://javadl.oracle.com/webapps/downloa
     rm jre-8u421-linux-x64.tar.gz
 
 # Установка Apache Spark
-RUN wget https://downloads.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz && \
+RUN wget https://downloads.apache.org/spark/spark-3.5.2/spark-3.5.2-bin-hadoop3.tgz && \
     mkdir -p /opt/spark && \
-    tar -xvf spark-3.5.1-bin-hadoop3.tgz -C /opt/spark && \
-    rm spark-3.5.1-bin-hadoop3.tgz
+    tar -xvf spark-3.5.2-bin-hadoop3.tgz -C /opt/spark && \
+    rm spark-3.5.2-bin-hadoop3.tgz
 
 # загрузка JDBC-драйверов для PostgreSQL и ClickHouse и перенос их в папку jars
-RUN wget https://jdbc.postgresql.org/download/postgresql-42.7.3.jar && \
-    wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.6.3/clickhouse-jdbc-0.6.3-all.jar && \
-    mv postgresql-42.7.3.jar /opt/spark/spark-3.5.1-bin-hadoop3/jars && \
-    mv clickhouse-jdbc-0.6.3-all.jar /opt/spark/spark-3.5.1-bin-hadoop3/jars
+RUN wget https://jdbc.postgresql.org/download/postgresql-42.7.4.jar && \
+    wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.6.4/clickhouse-jdbc-0.6.4-all.jar && \
+    mv postgresql-42.7.4.jar /opt/spark/spark-3.5.2-bin-hadoop3/jars && \
+    mv clickhouse-jdbc-0.6.4-all.jar /opt/spark/spark-3.5.2-bin-hadoop3/jars
 
 # Возвращение к пользователю по умолчанию
 USER airflow
 
 # Установка переменных окружения
 ENV JAVA_HOME=/opt/java/jdk-22.0.2
-ENV SPARK_HOME=/opt/spark/spark-3.5.1-bin-hadoop3
+ENV SPARK_HOME=/opt/spark/spark-3.5.2-bin-hadoop3
 ENV PATH=$PATH:$JAVA_HOME/bin
 ENV PATH=$PATH:$SPARK_HOME/bin
 ENV PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip
