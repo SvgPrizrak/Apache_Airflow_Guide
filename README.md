@@ -95,10 +95,10 @@ volumes:
 Поскольку установка новых Python-пакетов для Docker-контейнера проходит немного не так как в Jupyter Notebook, то стоит создать 3 файла в корневой директории: `requirements.txt`, `Dockerfile` и `.dockerignore`.
 Содержимое файла `requirements.txt` - пакеты для подключения к ClickHouse (актуальные версии `clickhouse-connect` и `clickhouse-driver` см. [здесь](https://pypi.org/project/clickhouse-driver/) и [здесь](https://pypi.org/project/clickhouse-connect/); третий пакет - это пакет, дающий возможность Apache Airflow создавать подключение к ClickHouse - [здесь](https://pypi.org/project/airflow-providers-clickhouse/); четвертый и пятый пакеты - это [pyspark](https://pypi.org/project/pyspark/) и [findspark](https://pypi.org/project/findspark/) - пакеты для инициализации подключения Apache Spark для работы с ним непосредственно в Apache Airflow; последний [пакет](https://pypi.org/project/py4j/) - позволяет запускать Python совместно с Java, что потребуется для работы Apache Spark).
 ```python
-clickhouse-connect==0.7.19
+clickhouse-connect==0.8.0
 clickhouse-driver==0.2.9
 airflow-providers-clickhouse==0.0.1
-pyspark==3.5.2
+pyspark==3.5.3
 findspark==2.0.1
 py4j==0.10.9.7
 ```
