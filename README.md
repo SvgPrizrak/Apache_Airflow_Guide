@@ -142,7 +142,7 @@ RUN wget https://jdbc.postgresql.org/download/postgresql-42.7.4.jar && \
 USER airflow
 
 # Установка переменных окружения
-ENV JAVA_HOME=/opt/java/jdk-22
+ENV JAVA_HOME=/opt/java/jdk-22.0.2
 ENV SPARK_HOME=/opt/spark/spark-3.5.3-bin-hadoop3
 ENV PATH=$PATH:$JAVA_HOME/bin
 ENV PATH=$PATH:$SPARK_HOME/bin
